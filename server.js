@@ -8,7 +8,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect('mongodb+srv://Homesh:Homesh123@cluster0.cx6z6ru.mongodb.net/?appName=Cluster0')
+mongoose.connect('mongodb+srv://Homesh:Homesh123@cluster0.cx6z6ru.mongodb.net/myapp?retryWrites=true&w=majority')
   .then(() => console.log('MongoDB Connected!'))
   .catch((err) => console.log(err))
 
@@ -50,6 +50,8 @@ const { signup, login } = require('./auth')
 app.post('/signup', signup)
 app.post('/login', login)
 
-app.listen(5000, () => {
-  console.log('Server is running on port 5000!')
+const PORT = process.env.PORT || 5000
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}!`)
 })
