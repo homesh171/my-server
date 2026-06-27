@@ -44,7 +44,7 @@ app.put('/users/:id', async (req, res) => {
   res.json(updatedUser)
 })
 
-const { signup, login } = require('./Auth')
+const { signup, login } = require('./auth')
 
 // add these routes:
 app.post('/signup', signup)
